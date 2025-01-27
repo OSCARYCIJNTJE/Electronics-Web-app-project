@@ -1,0 +1,129 @@
+﻿@page
+@using Electronics.Logic.DomainClasses.Products;
+@model Electronics_project.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Products page";
+}
+
+<div class="products-con">
+
+    <h1>Products</h1>
+    <form method="post" id="search-form">
+        <input type="text" id="search-bar" placeholder="search" />
+        <input type="submit" id="search-button" value="search"/>
+    </form>
+    
+
+    <div class="product-flex-con">
+
+@*         <div class="products-type">
+            <h2>Filter</h2>
+            <p>Link 1</p>
+            <p>Link 1</p>
+            <p>Link 1</p>
+            <p>Link 1</p>
+        </div> *@
+
+        <h1>@Model.Message</h1>
+
+        <div class="products">
+
+            @foreach (var computer in Model.Computers)
+            {
+                if (computer.Stock == 0)
+                {
+                    <h1>Out of Stock</h1>
+                }
+                <div class="product">
+
+@*                     <a class="product-link" data-id="@computer.SerialNumber" onclick="ShowOnClick(this)"><img src="@computer.GetImageString()" /></a> *@
+                    <a asp-page="ProductsDetails" asp-route-SerialNumber="@computer.SerialNumber"><img src="@computer.GetImageString()"/></a>
+
+                    <div class="product-notHovered">
+
+                        <h4>Name: @computer.Name</h4>
+                        <h4>Price: @computer.Price $</h4>
+                        <h4>OS: @computer.OperatingSystem</h4>
+                        <h4>Processor: @computer.Processor</h4>
+                        <h4>RAM: @computer.RAM GB</h4>
+                        <h4>Model: @computer.Model</h4>
+
+                    </div>
+
+                    <form method="post">
+                        <input type="hidden" value="@nameof(Computer)">
+                        <input asp-for="NewCart.Quantity" type="number" placeholder="Enter amount" name="quantity">
+                        <input asp-for="NewCart.SerialNumber" type="hidden" value="@computer.SerialNumber" name="serialNumber">
+                        <input type="submit" value="Add To Cart">
+                    </form>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form method="post" asp-page-handler="Favorite">
+                            <input type="hidden" value="@nameof(Computer)">
+                            <input type="submit" value="favorite">
+                            <input asp-for="Favorite" type="hidden" value="@computer.SerialNumber">
+                        </form>
+                    }
+
+                </div>
+
+            }
+
+            @foreach (var phone in Model.Phones)
+            {
+                <div class="product">
+
+                    <a asp-page="ProductsDetails" asp-route-SerialNumber="@phone.SerialNumber"><img src="@phone.GetImageString()" /></a>
+
+
+                    <div class="product-hovered">
+
+                        <h4>Name: @phone.Name</h4>
+                        <h4>Price: @phone.Price $</h4>
+                        <h4>Manufacturer: @phone.Manufacturer</h4>
+                        <h4>Model: @phone.Model</h4>
+                        <h4>Battery Capacity: @phone.BatteryCapacitymAh mAh</h4>
+
+                        <form method="post">
+                            <input type="hidden" value="@nameof(Phone)">
+                            <input asp-for="NewCart.Quantity" type="number" placeholder="Enter amount" name="quantity">
+                            <input asp-for="NewCart.SerialNumber" type="hidden" value="@phone.SerialNumber" name="serialNumber">
+                            <input type="submit" value="Add To Cart">
+                        </form>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form method="post" asp-page-handler="Favorite">
+                                <input type="hidden" value="@nameof(Phone)">
+                                <input type="submit" value="favorite">
+                                <input type="hidden" value="@phone.SerialNumber">
+                            </form>
+                        }
+
+                    </div>
+
+                </div>
+               
+            }
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function ShowOnClick(element) {
+
+        var productDetailCon = element.nextElementSibling;
+
+        document.querySelectorAll(".product-link").forEach(function (productLink) {
+            productLink.addEventListener("click", function () {
+                productDetailCon.classList.toggle("product-onHovered");
+            });
+        });
+    }
+
+</script>

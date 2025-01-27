@@ -1,0 +1,32 @@
+﻿@page
+@model Electronics_project.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login page";
+}
+
+<div class="login-con">
+
+    <form method="post" id="login-form">
+
+        <div class="login-header">
+            <h1>Login</h1>
+            <img src="images/computer-shop-icon.png" />
+        </div>
+        <h1>@Model.Message</h1>
+        <div>
+            <span asp-validation-for="CustomerCredentials.UserName"></span>
+            <input asp-for="CustomerCredentials.UserName" type="text" name="username" placeholder="Username" required>
+        </div>
+
+        <div>
+            <span asp-validation-for="CustomerCredentials.Password"></span>
+            <input asp-for="CustomerCredentials.Password" type="password" name="password" placeholder="Password" required/>
+        </div>
+
+        <div class="button-con">
+            <input type="submit" value="Login"/>
+        </div>
+        <p>No account? <a asp-page="Register">Register here</a></p>
+    </form>
+
+</div>

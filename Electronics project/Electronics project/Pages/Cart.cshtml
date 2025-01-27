@@ -1,0 +1,70 @@
+﻿@page
+@model Electronics_project.Pages.CartModel
+@{
+    ViewData["Title"] = "Cart page";
+}
+
+<div class="cart-con">
+    <div class="cart-header">
+        <h1>Your cart</h1>
+        <h2>@Model.Message</h2>
+    </div>
+
+    <div class="inside-cart">
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="register-quick">
+                <form method="post" asp-page-handler="Register" id="Quick-Register">
+
+                    <div class="register-header">
+                        <h1>Register</h1>
+                    </div>
+
+                    <input asp-for="RegisterCredentialsDTO.FirstName" placeholder="First Name" required />
+
+                    <input asp-for="RegisterCredentialsDTO.LastName" placeholder="Last Name" required />
+
+                    <input asp-for="RegisterCredentialsDTO.Email" type="email" placeholder="Email" required />
+
+                    <input asp-for="RegisterCredentialsDTO.UserName" placeholder="Username" required />
+
+                    <input asp-for="RegisterCredentialsDTO.Country" placeholder="Country" required />
+
+                    <input asp-for="RegisterCredentialsDTO.PostalCode" placeholder="Postal Code" required />
+
+                    <input asp-for="RegisterCredentialsDTO.CardInfo" placeholder="Card Info" />
+
+                    <input asp-for="RegisterCredentialsDTO.Password" type="password" placeholder="Password" required />
+
+                </form>
+            </div>
+        }
+
+        <div class="table-form-con">
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                      @foreach (var item in Model.CartList)
+                    {
+                <tr>
+                        <td><img src="@item.Electronic.GetImageString()" /></td>
+                        <td>Name: @item.Electronic.Name</td>
+                        <td><input type="number" value="@item.Quantity"/></td>
+                        <td><p>Price:@item.TotalPrice </p></td>
+                </tr>
+                    }
+            </table>
+            <form method="post" id="Purchase-Form">
+
+                <input type="submit" value="Buy"/>
+            </form>
+        </div>
+
+    </div>
+</div>

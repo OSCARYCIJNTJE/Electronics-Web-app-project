@@ -1,0 +1,63 @@
+﻿@page
+@model Electronics_project.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register page";
+}
+
+<div class="register-con">
+
+    <form method="post" id="register-form">
+
+        <div class="register-header">
+            <h1>Register</h1>
+            <img src="images/computer-shop-icon.png" />
+            <h3>@Model.Message</h3>
+        </div>
+
+@*         <input name="firstName" placeholder="First Name" required />
+
+        <input name="lastName" placeholder="Last Name" required />
+
+        <input name="email" type="email" placeholder="Email" required />
+
+        <input name="username" placeholder="Username" required />
+
+        <input name="country" placeholder="Country" required />
+
+        <input name="postalCode" placeholder="Postal Code" required />
+
+        <input name="cardInfo" placeholder="Card Info" />
+
+        <input name="password" type="password" placeholder="Password" required /> *@
+
+        <span asp-validation-for="RegisterCredentials.FirstName"></span>
+        <input asp-for="RegisterCredentials.FirstName" placeholder="First Name"/>
+
+        <span asp-validation-for="RegisterCredentials.LastName"></span>
+        <input asp-for="RegisterCredentials.LastName" placeholder="Last Name"/>
+
+        <span asp-validation-for="RegisterCredentials.Email"></span>
+        <input asp-for="RegisterCredentials.Email" placeholder="Email" />
+
+        <span asp-validation-for="RegisterCredentials.UserName"></span>
+        <input asp-for="RegisterCredentials.UserName" placeholder="Username" />
+
+        <span asp-validation-for="RegisterCredentials.Country"></span>
+        <input asp-for="RegisterCredentials.Country" placeholder="Country" />
+
+        <span asp-validation-for="RegisterCredentials.PostalCode"></span>
+        <input asp-for="RegisterCredentials.PostalCode" placeholder="Postal Code" />
+
+        <span asp-validation-for="RegisterCredentials.CardInfo"></span>
+        <input asp-for="RegisterCredentials.CardInfo" placeholder="Card Info" />
+
+        <span asp-validation-for="RegisterCredentials.Password"></span>
+        <input asp-for="RegisterCredentials.Password" type="password" placeholder="Password" />
+
+        <div class="button-con">
+            <input type="submit" value="Register" />
+        </div>
+
+    </form>
+
+</div>

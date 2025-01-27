@@ -1,0 +1,63 @@
+﻿@page
+@using Electronics.Logic.DomainClasses.Products;
+@model Electronics_project.Pages.ProductsDetailsModel
+@{
+    ViewData["Title"] = "Product Details page";
+}
+<div class="details-con">
+
+    <h1>@Model.Message</h1>
+
+    <form method="post" id="details-form">
+        <div class="img-con">
+
+            @if (Model.Computer != null)
+            {
+                <img src="@Model.Computer.GetImageString()" />
+                <div class="details">
+
+                    <h4>Name: @Model.Computer.Name</h4>
+                    <h4>Price: @Model.Computer.Price</h4>
+                    @foreach (var property in Model.ComputerProperties)
+                    {
+                        <p>@property.Name: @property.Value</p>
+                    }
+
+                    <input type="hidden" value="@nameof(Computer)">
+                    <input asp-for="NewCart.Quantity" type="number" placeholder="Enter amount" name="quantity">
+                    <input asp-for="NewCart.SerialNumber" type="hidden" value="@Model.Computer.SerialNumber" name="serialNumber">
+                    <input type="submit" value="Add To Cart">
+                </div>
+            }
+            else
+            {
+                <img src="@Model.Phone.GetImageString()"/>
+                <div class="details">
+                    @foreach (var property in Model.PhoneProperties)
+                    {
+                        <p>@property.Name: @property.Value</p>
+                    }
+
+                    <input type="hidden" value="@nameof(Phone)">
+                    <input asp-for="NewCart.Quantity" type="number" placeholder="Enter amount" name="quantity">
+                    <input asp-for="NewCart.SerialNumber" type="hidden" value="@Model.Phone.SerialNumber" name="serialNumber">
+                    <input type="submit" value="Add To Cart">
+                </div>
+            }
+
+        </div>
+    </form>
+
+    <div class="products">
+
+        @foreach (var item in Model.Relateds)
+        {
+            <div class="product">
+                <a asp-page="ProductsDetails" asp-route-SerialNumber="@item.SerialNumber"><img src="@item.GetImageString()" /></a>
+                <h3>@item.Name</h3>
+            </div>
+        }
+
+    </div>
+
+</div>

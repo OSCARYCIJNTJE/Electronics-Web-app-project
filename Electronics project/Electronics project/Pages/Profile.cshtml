@@ -1,0 +1,62 @@
+﻿@page
+@model Electronics_project.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Profile page";
+}
+
+<div class="profile-con">
+
+    <div class="profile-header">
+        <h1>Hello: @Model.RegisterCredentialsDTO.UserName</h1>
+    </div>
+
+    <form id="Profile-form" method="post">
+
+        <span asp-validation-for="RegisterCredentialsDTO.FirstName"></span>
+        <input asp-for="RegisterCredentialsDTO.FirstName" placeholder="First Name" required readonly/>
+
+        <span asp-validation-for="RegisterCredentialsDTO.LastName"></span>
+        <input asp-for="RegisterCredentialsDTO.LastName" placeholder="Last Name" required readonly />
+
+        <span asp-validation-for="RegisterCredentialsDTO.Email"></span>
+        <input asp-for="RegisterCredentialsDTO.Email" placeholder="Email" required readonly />
+
+        <span asp-validation-for="RegisterCredentialsDTO.UserName"></span>
+        <input asp-for="RegisterCredentialsDTO.UserName" placeholder="Username" required readonly />
+
+        <span asp-validation-for="RegisterCredentialsDTO.Country"></span>
+        <input asp-for="RegisterCredentialsDTO.Country" placeholder="Country" required readonly />
+
+        <span asp-validation-for="RegisterCredentialsDTO.PostalCode"></span>
+        <input asp-for="RegisterCredentialsDTO.PostalCode" placeholder="Postal Code" required readonly />
+
+        <span asp-validation-for="RegisterCredentialsDTO.CardInfo"></span>
+        <input asp-for="RegisterCredentialsDTO.CardInfo" placeholder="Card Info" readonly />
+
+@*         <span asp-validation-for="RegisterCredentialsDTO.Password"></span>
+        <input asp-for="RegisterCredentialsDTO.Password" type="password" placeholder="Password" required readonly/> *@
+
+        <div class="button-con">
+
+            <button id="Change">Change</button>
+
+            <input type="submit" value="save" />
+        </div>
+        
+    </form>
+
+    <div class="favorites">
+
+        <h1>Favorites</h1>
+        <h3>@Model.Message</h3>
+
+        @foreach (var product in Model.Favorites)
+        {
+            <div class="items">
+                <img src="@product.GetImageString()">
+            </div>
+        }
+
+    </div>
+
+</div>

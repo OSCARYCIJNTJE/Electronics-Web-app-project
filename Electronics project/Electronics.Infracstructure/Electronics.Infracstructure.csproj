@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ProductsInfra\**" />
+    <Compile Remove="UsersInfra\**" />
+    <EmbeddedResource Remove="ProductsInfra\**" />
+    <EmbeddedResource Remove="UsersInfra\**" />
+    <None Remove="ProductsInfra\**" />
+    <None Remove="UsersInfra\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infracstructure.Logic\Electronics.Logic.csproj" />
+  </ItemGroup>
+
+</Project>

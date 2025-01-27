@@ -1,0 +1,43 @@
+For a Computer class:
+
+Processor Type: A property that stores the type of processor (e.g., Intel Core i7, AMD Ryzen).
+
+RAM Size: A property representing the amount of RAM (random access memory) in gigabytes.
+
+Storage Capacity: A property to indicate the storage capacity in gigabytes or terabytes (e.g., 512GB SSD).
+
+Operating System: A property to specify the operating system running on the computer (e.g., Windows 10, macOS Catalina).
+
+Screen Size: A property representing the size of the computer's display in inches.
+
+Keyboard Type: A property to indicate the type of keyboard (e.g., QWERTY, mechanical).
+
+Mouse Type: A property that specifies the type of pointing device (e.g., touchpad, optical mouse).
+
+Ports: A property that stores the types and quantities of ports available (e.g., USB, HDMI, Thunderbolt).
+
+Power Source: A property to indicate the power source (e.g., AC power, battery).
+
+------------------------------------------------------------------------------------------------------------
+
+For a Phone class:
+
+Manufacturer: A property to store the phone manufacturer's name (e.g., Apple, Samsung).
+
+Model: A property representing the specific model or series of the phone (e.g., iPhone 12, Galaxy S21).
+
+Operating System: A property indicating the mobile operating system (e.g., Android, iOS).
+
+Screen Size: A property for the size of the phone's display in inches.
+
+Battery Capacity: A property that represents the phone's battery capacity in milliampere-hours (mAh).
+
+Camera Quality: A property to specify the camera quality or megapixels of the phone's camera(s).
+
+Storage Capacity: A property indicating the storage capacity in gigabytes (e.g., 128GB, 256GB).
+
+SIM Card Type: A property to specify the type of SIM card (e.g., nano-SIM, eSIM).
+
+Connectivity: A property to indicate available connectivity options (e.g., 4G, 5G, Wi-Fi, Bluetooth).
+
+Biometric Features: A property to denote biometric features like fingerprint sensors or facial recognition.

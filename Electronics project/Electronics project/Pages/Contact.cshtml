@@ -1,0 +1,28 @@
+﻿@page
+@model Electronics_project.Pages.ContactModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="contact-con">
+    <form method="post" id="contact-form">
+        <label asp-for="Contact.Name">Name</label>
+        <input asp-for="Contact.Name"  />
+        <span asp-validation-for="Contact.Name"></span>
+        <label asp-for="Contact.Email">Email</label>
+        <input asp-for="Contact.Email" />
+        <span asp-validation-for="Contact.Email"></span>
+@*         <label for="Country"></label>
+            <option value="Country"></option>
+        </select> *@
+
+        <label asp-for="Contact.Subject">Subject</label>
+        <textarea asp-for="Contact.Subject"></textarea>
+        <span asp-validation-for="Contact.Subject"></span>
+
+        <input type="submit" asp-page-handler="Contact"/>
+        <input type="submit" asp-page-handler="Cancel" value="cancel" formnovalidate/>
+        @* <partial name="_ValidationScriptsPartial" /> *@
+        <h2>@Model.Message</h2>
+    </form>
+</div>
